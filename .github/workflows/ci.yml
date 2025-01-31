@@ -1,0 +1,46 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Auto Create PR Before Merge to Master
+
+on:
+  push:
+    branches-ignore:
+      - master 
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Determine source branch
+        id: get_branch
+        run: echo "BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: master
+          branch: ${{ env.BRANCH_NAME }}
+          title: "🚀 자동 PR 생성: ${{ env.BRANCH_NAME }} → master"
+          body: |
+            ❗️ 병합 시도가 감지되었습니다.
+            - `${{ env.BRANCH_NAME }}` 브랜치가 master로 병합될 예정입니다.
+            - 코드 리뷰 후 승인해 주세요.
+          labels: |
+            automated
+            review-needed
+          reviewers: |
+            Nanoruri
+          assignees: |
+            your-github-username
+
