@@ -1,6 +1,6 @@
 package me.jh.pattern.builder.nomalbuilder;
 
-
+// ConcreteBuilder 클래스
 public class ComputerBuilderImpl implements ComputerBuilder {
 	private String cpu;
 	private String ram;

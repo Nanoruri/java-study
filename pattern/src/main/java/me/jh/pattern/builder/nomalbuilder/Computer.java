@@ -1,5 +1,6 @@
 package me.jh.pattern.builder.nomalbuilder;
 
+//Product 클래스
 public class Computer {
 
 	private String cpu;
