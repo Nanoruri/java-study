@@ -15,6 +15,7 @@ It is a repository for studying and organizing examples of design patterns and J
 - 2.1. [Builder](#builder)
 - 2.2. [Singleton](#singleton)
 - 2.3. [Delegate](#delegate)
+- 2.4. [Facade](#facade)
 
 ---
 
@@ -161,6 +162,45 @@ It is a repository for studying and organizing examples of design patterns and J
 
 **테스트 코드**
 - [DelegateTest](pattern/src/test/java/me/jh/pattern/delegate/PrinterTest.java)
+
+
+---
+### 2.4. Facade
+복잡한 시스템을 단순화하기 위해, 여러 클래스나 시스템의 인터페이스를 단일 클래스나 단일 인터페이스로 제공하는 디자인 패턴입니다.
+이를 통해 클라이언트는 복잡한 시스템의 세부 구현에 대해 알 필요 없이, 간단한 인터페이스만을 통해 시스템을 사용할 수 있게 됩니다.
+파사드 패턴은 서브시스템(Subsystem) 간의 상호작용을 은폐하고, 클라이언트가 복잡한 시스템을 사용할 때 편리한 인터페이스를 제공하는 방식으로 작동합니다.
+
+
+**구조**
+- Facade: 클라이언트가 사용할 인터페이스를 제공
+- Subsystem: Facade가 복잡한 하위 시스템(클래스)
+
+
+**주 사용처 (활용)**
+- 서브시스템을 간단하게 사용하는 경우
+- 복잡한 라이브러리나 서드파티 시스템을 사용할 때
+- 서브시스템을 감추고 단순화하고 싶은 경우
+
+
+**장점**
+- 복잡도 감소
+- 클라이언트가 서브시스템을 직접 사용하지 않아도 됨
+- 결합도 감소
+- 서브시스템 변경에 대한 영향 최소화
+- 클라이언트 코드 간결화
+- 서브시스템 간의 통합
+
+**단점**
+- 파사드 클래스가 많은 역할을 담당하게 되면, 단일 책임 원칙 위배 가능성
+- 파사드 클래스가 복잡해질 수록 유지보수가 어려워질 수 있음
+- 서브시스템을 직접 사용하는 경우에 비해 세밀한 제어가 어려움
+
+
+**구현 예제**
+- [Facade](pattern/src/main/java/me/jh/pattern/facade)
+
+**테스트 코드**
+- [FacadeTest](pattern/src/test/java/me/jh/pattern/facade/HomeTheaterFacadeTest.java)
 
 ***
 
