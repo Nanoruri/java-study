@@ -8,12 +8,13 @@ It is a repository for studying and organizing examples of design patterns and J
 
 ## 목차
 ### 1. [Java Features](#java-features)
-- [1.1. Type Erasure](#type-erasure)
+- 1.1. [Type Erasure](#type-erasure)
 
 
 ### 2. [Design Patterns](#design-patterns)
-- [2.1. Builder](#builder)
-- [2.2. Singleton](#singleton)
+- 2.1. [Builder](#builder)
+- 2.2. [Singleton](#singleton)
+- 2.3. [Delegate](#delegate)
 
 ---
 
@@ -126,6 +127,40 @@ It is a repository for studying and organizing examples of design patterns and J
 
 **테스트 코드**
 - [SingletonTest.java](pattern/src/test/java/me/jh/pattern/singleton/SingletonTest.java)
+
+
+---
+
+### 2.3. Delegate
+객체가 특정 작업을 직접 수행하는 대신, 다른 객체(델리게이트)에게 위임(delegate)하는 구조를 가지는 디자인 패턴입니다.
+이 패턴을 사용하면 코드의 재사용성을 높이고, 유연성을 증가시킬 수 있습니다.
+
+**구조**
+- caller: 작업을 위임하는 객체
+- delegate: 작업을 수행하는 객체
+- interface(선택적 요소): caller와 delegate 사이에서 작업을 위임하기 위한 인터페이스
+
+**주 사용처 (활용)**
+- 테스트하기 어려운 static 메서드나 final 클래스의 메서드를 테스트
+- GUI 프레임워크에서 이벤트 처리
+- IOS 개발
+
+**장점**
+- 코드의 재사용성 증가
+- 객체간 결합도 감소
+- 유연성과 확장성 증가
+- 테스트 용이성 증가
+
+**단점**
+- 구현 클래스가 많아질 수록 복잡도 증가
+- 미세한 성능 저하 가능성
+- 디버깅 어려움
+
+**구현 예제**
+- [Delegate](pattern/src/main/java/me/jh/pattern/delegate)
+
+**테스트 코드**
+- [DelegateTest](pattern/src/test/java/me/jh/pattern/delegate/PrinterTest.java)
 
 ***
 
