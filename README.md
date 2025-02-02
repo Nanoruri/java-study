@@ -16,6 +16,7 @@ It is a repository for studying and organizing examples of design patterns and J
 - 2.2. [Singleton](#singleton)
 - 2.3. [Delegate](#delegate)
 - 2.4. [Facade](#facade)
+- 2.5. [Decorator](#decorator)
 
 ---
 
@@ -202,6 +203,43 @@ It is a repository for studying and organizing examples of design patterns and J
 **테스트 코드**
 - [FacadeTest](pattern/src/test/java/me/jh/pattern/facade/HomeTheaterFacadeTest.java)
 
+---
+
+### 2.5. Decorator
+기존 객체의 기능을 변경하지 않고, 동적으로 새로운 기능을 추가할 수 있도록 하는 디자인 패턴입니다.
+객체를 감싸는 **Wrapper 클래스(데코레이터)**를 사용하여, 기존 객체의 구조를 변경하지 않고 기능을 확장할 수 있습니다.
+상속을 사용하여 기능을 확장하는 것이 아니라, 객체를 감싸서(Composition) 동적으로 기능을 추가하는 방식으로 작동합니다.
+ps. Component를 구현하는 클래스가 두개(기본 클래스, 추상 클래스)가 필요하다.
+
+**구조**
+- Component: 기본 기능을 정의하는 인터페이스
+- ConcreteComponent: 기본 기능을 구현하는 클래스(실제 객체)
+- Decorator: Component를 감싸고 있으며, 기본적으로 Component의 인터페이스를 구현
+- ConcreteDecorator: Decorator를 상속받아 새로운 기능을 추가하는 클래스
+
+**주 사용처 (활용)**
+- 기존 객체의 기능을 확장하고 싶은 경우
+- 상속을 통한 기능 확장이 어려운 경우
+- 객체의 기능을 동적으로 추가하고 제거하고 싶은 경우
+
+**장점**
+- 동적으로 객체의 기능 확장 가능
+- 상속 방식보다 클래스 수 증가가 적음
+- 기존 코드 변경 없이 새로운 기능 추가 가능
+
+**단점**
+- 데코레이터가 중첩되면 디버깅 어려움
+- 객체가 많이 생성 될 수 있음
+
+**상속과의 차이**
+- 상속 방식: 기능을 추가할 때마다 새로운 하위 클래스를 계속 만들어야 함.
+- 데코레이터 방식: 기존 클래스를 수정하지 않고도 새로운 기능을 조합하여 추가 가능.
+
+**구현 예제**
+- [Decorator](pattern/src/main/java/me/jh/pattern/decorator)
+
+**테스트 코드**
+- [DecoratorTest](pattern/src/test/java/me/jh/pattern/decorator/DecoratorTest.java)
 ***
 
 ---
